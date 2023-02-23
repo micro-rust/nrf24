@@ -1,0 +1,15 @@
+[package]
+name = "nrf24"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+
+
+[dependencies.embedded-hal]
+version = "0.2.6"
+
+[dependencies.embedded-hal-async]
+version = "0.2.0-alpha.0"
