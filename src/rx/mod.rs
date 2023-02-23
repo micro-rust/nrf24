@@ -162,15 +162,12 @@ impl<SPI: SpiBus + SpiBusWrite, CS: OutputPin, CE: OutputPin, IRQ: Wait> Receive
 
     /// Listens for a payload in one of the active pipes.
     /// Awaits until a new packet is ready.
-    pub async fn recv(&mut self, payload: Option<()>, stop: bool) -> Result<Option<Payload>, SPI::Error> {
-        // Timeout of the IRQ wait.
-        const TIMEOUT: Duration = Duration::from_secs(1);
-
+    pub async fn recv(&mut self, payload: Option<()>, stop: bool, timeout: Duration) -> Result<Option<Payload>, SPI::Error> {
         // Begin listening.
         self.listen().await?;
 
         // Wait for the IRQ.
-        embassy_time::with_timeout(TIMEOUT, self.base.wait()).await;
+        embassy_time::with_timeout(timeout, self.base.wait()).await;
 
         // Set CE low.
         self.base.disable();
