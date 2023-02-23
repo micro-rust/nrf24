@@ -8,6 +8,10 @@ edition = "2021"
 [dependencies]
 
 
+[dependencies.embassy-time]
+git = "https://github.com/embassy-rs/embassy"
+version = "0.1.0"
+
 [dependencies.embedded-hal]
 version = "0.2.6"
 
