@@ -39,7 +39,7 @@ use super::{
 
 pub struct Receiver<SPI: SpiBus + SpiBusWrite, CS: OutputPin, CE: OutputPin, IRQ: Wait> {
     /// Basic device driver.
-    base: BaseDriver<SPI, CS, CE, IRQ>,
+    pub base: BaseDriver<SPI, CS, CE, IRQ>,
 
     /// Configuration of the receiver.
     config: Config,
