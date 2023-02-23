@@ -39,6 +39,20 @@ pub struct Config {
 }
 
 impl Config {
+    /// Static initializer for a full struct.
+    pub const fn configured(channel: u8, datarate: DataRate, gain: Gain, addrwidth: AddressWidth, crc: Option<CRCBytes>, address: [u8; 5], subaddress: [u8; 4], pipes: [Option<Pipe>; 6],) -> Self {
+        Config {
+            channel,
+            datarate,
+            gain,
+            addrwidth,
+            crc,
+            address,
+            subaddress,
+            pipes,
+        }
+    }
+
     /// Builds the CONFIG register.
     pub(crate) const fn config(&self) -> u8 {
         // Register word.
